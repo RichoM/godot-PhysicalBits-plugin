@@ -15,4 +15,5 @@ shader_param/uv1_offset = Vector3( 0, 0, 0 )
 shader_param/uv2_scale = Vector3( 1, 1, 1 )
 shader_param/uv2_offset = Vector3( 0, 0, 0 )
 shader_param/scroll_speed = 0.01
+shader_param/scroll = null
 shader_param/texture_albedo = ExtResource( 1 )

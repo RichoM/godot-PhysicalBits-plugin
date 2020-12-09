@@ -12,6 +12,7 @@ uniform vec3 uv2_scale;
 uniform vec3 uv2_offset;
 
 uniform float scroll_speed = 0.1;
+uniform vec2 scroll;
 
 void vertex() {
 	UV=UV*uv1_scale.xy+uv1_offset.xy;
@@ -19,7 +20,8 @@ void vertex() {
 
 void fragment() {
 	vec2 base_uv = UV;
-	base_uv.x += TIME * scroll_speed;
+	base_uv.x += scroll.x * scroll_speed;
+	base_uv.y += scroll.y * scroll_speed;
 	vec4 albedo_tex = texture(texture_albedo,base_uv);
 	ALBEDO = albedo.rgb * albedo_tex.rgb;
 	METALLIC = metallic;
