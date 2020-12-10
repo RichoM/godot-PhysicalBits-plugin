@@ -1,11 +1,11 @@
-extends Area
+extends Spatial
 
 const GRAVITY = -1
 const MIN_SPEED = deg2rad(-75)
 const MAX_SPEED = deg2rad(75)
 
 var time = 0
-var vel = Vector2(0.5, 0.5)
+var vel = Vector2(0.25, 0.5)
 
 var colliding = false
 
@@ -26,16 +26,16 @@ func _process(delta):
 	
 	time += delta
 	$rotation/mesh.rotation.x = sin(time * 5) * abs(vel.y) * 0.4
-
 	
 	translate_object_local(Vector3.RIGHT * vel.x * delta + Vector3.UP * vel.y * delta)
 	
 	var m = $rotation/mesh.get_surface_material(0)
 	if colliding:
 		m.albedo_color = Color(1.0, 0.0, 0.0, 1.0)
+		print("COLLISION!")
 	else:
 		m.albedo_color = Color("ffdb37")
 
 func _physics_process(delta):
 	# TODO(Richo): Bounce off collision
-	colliding = get_overlapping_bodies().size() > 0
+	colliding = $rotation/area.get_overlapping_bodies().size() > 0

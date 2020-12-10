@@ -1,0 +1,107 @@
+[gd_scene load_steps=10 format=2]
+
+[sub_resource type="CapsuleMesh" id=2]
+
+[sub_resource type="Shader" id=8]
+code = "shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : hint_color;
+uniform sampler2D texture_albedo : hint_albedo;
+uniform float specular;
+uniform float metallic;
+uniform float roughness : hint_range(0,1);
+uniform float point_size : hint_range(0,128);
+uniform sampler2D texture_roughness : hint_white;
+uniform vec4 roughness_texture_channel;
+uniform sampler2D texture_normal : hint_normal;
+uniform float normal_scale : hint_range(-16,16);
+uniform sampler2D texture_ambient_occlusion : hint_white;
+uniform vec4 ao_texture_channel;
+uniform float ao_light_affect;
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+uniform sampler2D text_disp : hint_white;
+
+float disp(float n) {
+	return 1.5 - pow(abs(n), 1.5);
+}
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	vec4 disp_tex = texture(text_disp, UV);	
+	
+	VERTEX.x *= disp(disp_tex.x);
+	VERTEX.y *= disp(disp_tex.y);
+	VERTEX.z *= disp(disp_tex.z);
+}
+
+
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	METALLIC = metallic;
+	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+	SPECULAR = specular;
+	NORMALMAP = texture(texture_normal,base_uv).rgb;
+	NORMALMAP_DEPTH = normal_scale;
+	AO = dot(texture(texture_ambient_occlusion,base_uv),ao_texture_channel);
+	AO_LIGHT_AFFECT = ao_light_affect;
+}
+"
+
+[sub_resource type="OpenSimplexNoise" id=17]
+seed = 7
+octaves = 5
+
+[sub_resource type="NoiseTexture" id=16]
+seamless = true
+noise = SubResource( 17 )
+
+[sub_resource type="StreamTexture" id=10]
+flags = 7
+load_path = "res://.import/rocks_ground_06_diff_1k.jpg-ffa0b5da7b1de38ba05584a49d665a70.s3tc.stex"
+
+[sub_resource type="StreamTexture" id=11]
+flags = 7
+load_path = "res://.import/rocks_ground_06_ao_1k.jpg-635778bc129a840e08353aed499e1a0e.s3tc.stex"
+
+[sub_resource type="StreamTexture" id=12]
+flags = 7
+load_path = "res://.import/rocks_ground_06_nor_1k.jpg-cf0c64a6769a64bd321a78bec81a5129.s3tc.stex"
+
+[sub_resource type="StreamTexture" id=13]
+flags = 7
+load_path = "res://.import/rocks_ground_06_rough_1k.jpg-ead1fc67248e84bf03cb25a9e0dfdc54.s3tc.stex"
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 8 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/specular = 0.5
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = 1.0
+shader_param/roughness_texture_channel = Plane( 0.333, 0.333, 0.385, 0 )
+shader_param/normal_scale = 4.0
+shader_param/ao_texture_channel = Plane( 1, 0, 0, 0 )
+shader_param/ao_light_affect = 2.0
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 1, 0.499, 1 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/texture_albedo = SubResource( 10 )
+shader_param/texture_roughness = SubResource( 13 )
+shader_param/texture_normal = SubResource( 12 )
+shader_param/texture_ambient_occlusion = SubResource( 11 )
+shader_param/text_disp = SubResource( 16 )
+
+[node name="asteroid_1" type="MeshInstance"]
+transform = Transform( 0.136269, 0, 0.990672, 0, 1, 0, -0.990672, 0, 0.136269, 1.46067, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 6 )
