@@ -1,7 +1,17 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
 
-[ext_resource path="res://space_noise/space_noise.2.png" type="Texture" id=1]
 [ext_resource path="res://space_noise/space_noise.shader" type="Shader" id=2]
+
+[sub_resource type="OpenSimplexNoise" id=6]
+seed = 3
+octaves = 7
+period = 32.0
+
+[sub_resource type="NoiseTexture" id=9]
+width = 256
+height = 256
+seamless = true
+noise = SubResource( 6 )
 
 [resource]
 shader = ExtResource( 2 )
@@ -10,10 +20,10 @@ shader_param/specular = 0.5
 shader_param/metallic = 0.0
 shader_param/roughness = 1.0
 shader_param/point_size = 1.0
+shader_param/emission = Color( 0.00784314, 0.878431, 1, 1 )
+shader_param/emission_energy = 2.0
 shader_param/uv1_scale = Vector3( 2, 2, 2 )
-shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv1_offset = Vector3( 0.809, 0, 0 )
 shader_param/uv2_scale = Vector3( 1, 1, 1 )
 shader_param/uv2_offset = Vector3( 0, 0, 0 )
-shader_param/scroll_speed = 0.05
-shader_param/scroll = null
-shader_param/texture_albedo = ExtResource( 1 )
+shader_param/texture_albedo = SubResource( 9 )
