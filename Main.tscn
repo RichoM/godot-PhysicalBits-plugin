@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://airplane.gd" type="Script" id=1]
 [ext_resource path="res://airplane/airplane.obj" type="ArrayMesh" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://airplane/legalpad.jpg" type="Texture" id=6]
 [ext_resource path="res://asteroid_0.tscn" type="PackedScene" id=7]
 [ext_resource path="res://space_noise.gd" type="Script" id=8]
+[ext_resource path="res://stars/stars.png" type="Texture" id=9]
+[ext_resource path="res://stars/stars.shader" type="Shader" id=10]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_vertex_lighting = true
@@ -32,6 +34,34 @@ glow_blend_mode = 0
 adjustment_saturation = 1.35
 
 [sub_resource type="PlaneMesh" id=4]
+
+[sub_resource type="PlaneMesh" id=5]
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = ExtResource( 10 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/specular = 0.5
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = 1.0
+shader_param/uv1_scale = Vector3( 12, 12, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/texture_albedo = ExtResource( 9 )
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = ExtResource( 10 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/specular = 0.5
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = 0.0
+shader_param/uv1_scale = Vector3( 10, 10, 1 )
+shader_param/uv1_offset = Vector3( 4.487, -10.587, 0 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/texture_albedo = ExtResource( 9 )
 
 [node name="Spatial" type="Spatial"]
 
@@ -69,7 +99,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -
 mesh = SubResource( 4 )
 material/0 = ExtResource( 4 )
 script = ExtResource( 8 )
-speed = 0.1
+speed = 0.06
 
 [node name="space_noise_1" type="MeshInstance" parent="airplane/Camera/space_noise"]
 transform = Transform( 1.5, 0, 0, 0, -4.37114e-08, -1.5, 0, 1, -6.55671e-08, 0, 0, -2 )
@@ -84,6 +114,23 @@ mesh = SubResource( 4 )
 material/0 = ExtResource( 5 )
 script = ExtResource( 8 )
 speed = 0.01
+
+[node name="stars" type="Spatial" parent="airplane/Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.5 )
+
+[node name="stars_0" type="MeshInstance" parent="airplane/Camera/stars"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 7 )
+script = ExtResource( 8 )
+speed = 0.01
+
+[node name="stars_1" type="MeshInstance" parent="airplane/Camera/stars"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 8 )
+script = ExtResource( 8 )
+speed = 0.05
 
 [node name="asteroid_0" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13556, 0.0102676, 0 )

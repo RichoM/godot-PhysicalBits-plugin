@@ -2,16 +2,16 @@
 
 [ext_resource path="res://space_noise/space_noise.shader" type="Shader" id=2]
 
-[sub_resource type="OpenSimplexNoise" id=6]
+[sub_resource type="OpenSimplexNoise" id=1]
 seed = 3
 octaves = 7
 period = 32.0
 
-[sub_resource type="NoiseTexture" id=7]
+[sub_resource type="NoiseTexture" id=2]
 width = 256
 height = 256
 seamless = true
-noise = SubResource( 6 )
+noise = SubResource( 1 )
 
 [resource]
 shader = ExtResource( 2 )
@@ -26,4 +26,4 @@ shader_param/uv1_scale = Vector3( 2, 2, 2 )
 shader_param/uv1_offset = Vector3( 0.809, 0, 0 )
 shader_param/uv2_scale = Vector3( 1, 1, 1 )
 shader_param/uv2_offset = Vector3( 0, 0, 0 )
-shader_param/texture_albedo = SubResource( 7 )
+shader_param/texture_albedo = SubResource( 2 )

@@ -6,13 +6,14 @@
 
 [sub_resource type="PlaneMesh" id=1]
 
-[sub_resource type="Environment" id=11]
+[sub_resource type="Environment" id=2]
 background_mode = 1
 
 [node name="Spatial" type="Spatial"]
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 2.5, 0, 0, 0, -1.09278e-07, -2.5, 0, 2.5, -1.09278e-07, 0, 0, -4 )
+visible = false
 mesh = SubResource( 1 )
 material/0 = ExtResource( 1 )
 __meta__ = {
@@ -29,6 +30,7 @@ __meta__ = {
 
 [node name="MeshInstance3" type="MeshInstance" parent="."]
 transform = Transform( 2.5, 0, 0, 0, -1.09278e-07, -2.5, 0, 2.5, -1.09278e-07, 0, 0, -2 )
+visible = false
 mesh = SubResource( 1 )
 material/0 = ExtResource( 3 )
 __meta__ = {
@@ -37,5 +39,6 @@ __meta__ = {
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.472 )
-environment = SubResource( 11 )
+keep_aspect = 0
+environment = SubResource( 2 )
 projection = 1
