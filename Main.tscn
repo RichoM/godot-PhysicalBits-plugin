@@ -7,7 +7,7 @@
 [ext_resource path="res://space_noise/space_noise_2.tres" type="Material" id=5]
 [ext_resource path="res://airplane/legalpad.jpg" type="Texture" id=6]
 [ext_resource path="res://asteroid_0.tscn" type="PackedScene" id=7]
-[ext_resource path="res://space_noise.gd" type="Script" id=8]
+[ext_resource path="res://parallax.gd" type="Script" id=8]
 [ext_resource path="res://stars/stars.png" type="Texture" id=9]
 [ext_resource path="res://stars/stars.shader" type="Shader" id=10]
 
