@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://airplane.gd" type="Script" id=1]
 [ext_resource path="res://airplane/airplane.obj" type="ArrayMesh" id=2]
@@ -10,21 +10,7 @@
 [ext_resource path="res://parallax.gd" type="Script" id=8]
 [ext_resource path="res://stars/stars.png" type="Texture" id=9]
 [ext_resource path="res://stars/stars.shader" type="Shader" id=10]
-
-[sub_resource type="SpatialMaterial" id=1]
-flags_vertex_lighting = true
-params_diffuse_mode = 4
-params_specular_mode = 3
-albedo_color = Color( 1, 0.858824, 0.215686, 1 )
-albedo_texture = ExtResource( 6 )
-emission_enabled = true
-emission = Color( 1, 1, 1, 1 )
-emission_energy = 0.44
-emission_operator = 0
-emission_on_uv2 = false
-
-[sub_resource type="BoxShape" id=2]
-extents = Vector3( 0.0170055, 0.00147194, 0.0056475 )
+[ext_resource path="res://follow_player.gd" type="Script" id=11]
 
 [sub_resource type="Environment" id=3]
 background_mode = 1
@@ -63,10 +49,74 @@ shader_param/uv2_scale = Vector3( 1, 1, 1 )
 shader_param/uv2_offset = Vector3( 0, 0, 0 )
 shader_param/texture_albedo = ExtResource( 9 )
 
+[sub_resource type="SpatialMaterial" id=1]
+flags_vertex_lighting = true
+params_diffuse_mode = 4
+params_specular_mode = 3
+albedo_color = Color( 1, 0.858824, 0.215686, 1 )
+albedo_texture = ExtResource( 6 )
+emission_enabled = true
+emission = Color( 1, 1, 1, 1 )
+emission_energy = 0.44
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.0170055, 0.00147194, 0.0056475 )
+
 [node name="Spatial" type="Spatial"]
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.396038, 0.59109, -0.702685, -0.532465, 0.771291, 0.3487, 0.748088, 0.236057, 0.620195, 0, 0, 0 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.054644, 0, 0.5 )
+keep_aspect = 0
+environment = SubResource( 3 )
+projection = 1
+script = ExtResource( 11 )
+player = NodePath("../airplane")
+
+[node name="space_noise" type="Spatial" parent="Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5 )
+
+[node name="space_noise_0" type="MeshInstance" parent="Camera/space_noise"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -3 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 4 )
+script = ExtResource( 8 )
+speed = 0.06
+
+[node name="space_noise_1" type="MeshInstance" parent="Camera/space_noise"]
+transform = Transform( 1.5, 0, 0, 0, -4.37114e-08, -1.5, 0, 1, -6.55671e-08, 0, 0, -2 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 3 )
+script = ExtResource( 8 )
+speed = 0.05
+
+[node name="space_noise_2" type="MeshInstance" parent="Camera/space_noise"]
+transform = Transform( 2, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 0, 0, -1 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+script = ExtResource( 8 )
+speed = 0.01
+
+[node name="stars" type="Spatial" parent="Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.5 )
+
+[node name="stars_0" type="MeshInstance" parent="Camera/stars"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+script = ExtResource( 8 )
+speed = 0.01
+
+[node name="stars_1" type="MeshInstance" parent="Camera/stars"]
+transform = Transform( 1.1, 0, 0, 0, -4.80825e-08, -1.1, 0, 1.1, -4.80825e-08, 0, 0, -1 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 7 )
+script = ExtResource( 8 )
+speed = 0.05
 
 [node name="airplane" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.357, 0.005, 0 )
@@ -85,64 +135,17 @@ material/0 = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00149605, 0, 0 )
 shape = SubResource( 2 )
 
-[node name="Camera" type="Camera" parent="airplane"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.302356, -0.005, 0.5 )
-keep_aspect = 0
-environment = SubResource( 3 )
-projection = 1
-
-[node name="space_noise" type="Spatial" parent="airplane/Camera"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5 )
-
-[node name="space_noise_0" type="MeshInstance" parent="airplane/Camera/space_noise"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -3 )
-mesh = SubResource( 4 )
-material/0 = ExtResource( 4 )
-script = ExtResource( 8 )
-speed = 0.06
-
-[node name="space_noise_1" type="MeshInstance" parent="airplane/Camera/space_noise"]
-transform = Transform( 1.5, 0, 0, 0, -4.37114e-08, -1.5, 0, 1, -6.55671e-08, 0, 0, -2 )
-mesh = SubResource( 4 )
-material/0 = ExtResource( 3 )
-script = ExtResource( 8 )
-speed = 0.05
-
-[node name="space_noise_2" type="MeshInstance" parent="airplane/Camera/space_noise"]
-transform = Transform( 2, 0, 0, 0, -4.37114e-08, -2, 0, 1, -8.74228e-08, 0, 0, -1 )
-mesh = SubResource( 4 )
-material/0 = ExtResource( 5 )
-script = ExtResource( 8 )
-speed = 0.01
-
-[node name="stars" type="Spatial" parent="airplane/Camera"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.5 )
-
-[node name="stars_0" type="MeshInstance" parent="airplane/Camera/stars"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-mesh = SubResource( 5 )
-material/0 = SubResource( 6 )
-script = ExtResource( 8 )
-speed = 0.01
-
-[node name="stars_1" type="MeshInstance" parent="airplane/Camera/stars"]
-transform = Transform( 1.1, 0, 0, 0, -4.80825e-08, -1.1, 0, 1.1, -4.80825e-08, 0, 0, -1 )
-mesh = SubResource( 5 )
-material/0 = SubResource( 7 )
-script = ExtResource( 8 )
-speed = 0.05
-
 [node name="asteroid_0" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13556, 0.0102676, 0 )
-camera = NodePath("../airplane/Camera")
+camera = NodePath("../Camera")
 speed = 5.0
 
 [node name="asteroid_1" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.481018, 0, 0 )
-camera = NodePath("../airplane/Camera")
+camera = NodePath("../Camera")
 speed = 10.0
 
 [node name="asteroid_2" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.213787, -0.150112, 0 )
-camera = NodePath("../airplane/Camera")
+camera = NodePath("../Camera")
 speed = 2.5
