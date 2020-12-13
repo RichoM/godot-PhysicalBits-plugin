@@ -9,8 +9,6 @@ script = ExtResource( 3 )
 
 [node name="asteroid_0" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2376, 0 )
-camera = NodePath("../Camera")
-speed = 100.0
 
 [node name="asteroid_1" parent="." instance=ExtResource( 1 )]
 transform = Transform( 0.136269, 0, 0.990672, 0, 1, 0, -0.990672, 0, 0.136269, 0, 0, 0 )

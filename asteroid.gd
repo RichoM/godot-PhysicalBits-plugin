@@ -1,8 +1,16 @@
 extends KinematicBody
+class_name Asteroid
 
 export var camera : NodePath
-export var speed = 1.0
 
+const MIN_SPEED = 0.1
+const MAX_SPEED = 5
+
+var speed = 1.0
+
+func _ready():
+	speed = rand_range(MIN_SPEED, MAX_SPEED)
+	
 func _process(delta):
 	teleport()
 	$mesh.rotate_z(delta)
