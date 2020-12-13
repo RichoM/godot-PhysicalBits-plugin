@@ -35,5 +35,6 @@ movement_up={
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+quality/reflections/texture_array_reflections=false
 quality/filters/use_nearest_mipmap_filter=true
 environment/default_environment="res://default_env.tres"

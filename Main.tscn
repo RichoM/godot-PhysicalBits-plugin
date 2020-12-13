@@ -37,7 +37,7 @@ adjustment_saturation = 1.35
 
 [sub_resource type="PlaneMesh" id=5]
 
-[sub_resource type="ShaderMaterial" id=7]
+[sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 10 )
 shader_param/albedo = Color( 1, 1, 1, 1 )
 shader_param/specular = 0.5
@@ -50,7 +50,7 @@ shader_param/uv2_scale = Vector3( 1, 1, 1 )
 shader_param/uv2_offset = Vector3( 0, 0, 0 )
 shader_param/texture_albedo = ExtResource( 9 )
 
-[sub_resource type="ShaderMaterial" id=8]
+[sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 10 )
 shader_param/albedo = Color( 1, 1, 1, 1 )
 shader_param/specular = 0.5
@@ -121,14 +121,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.5 )
 [node name="stars_0" type="MeshInstance" parent="airplane/Camera/stars"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 5 )
-material/0 = SubResource( 7 )
+material/0 = SubResource( 6 )
 script = ExtResource( 8 )
 speed = 0.01
 
 [node name="stars_1" type="MeshInstance" parent="airplane/Camera/stars"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1 )
+transform = Transform( 1.1, 0, 0, 0, -4.80825e-08, -1.1, 0, 1.1, -4.80825e-08, 0, 0, -1 )
 mesh = SubResource( 5 )
-material/0 = SubResource( 8 )
+material/0 = SubResource( 7 )
 script = ExtResource( 8 )
 speed = 0.05
 
