@@ -9,6 +9,9 @@ var vel = Vector2(0.25, 0.5)
 
 var colliding = false
 
+func _ready():
+	randomize()
+
 func _process(delta):
 	if colliding:
 		gameover(delta)
