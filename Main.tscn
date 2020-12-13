@@ -1,11 +1,11 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://airplane.gd" type="Script" id=1]
-[ext_resource path="res://airplane/airplane.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://asteroid.gd" type="Script" id=2]
 [ext_resource path="res://space_noise/space_noise_1.tres" type="Material" id=3]
 [ext_resource path="res://space_noise/space_noise_0.tres" type="Material" id=4]
 [ext_resource path="res://space_noise/space_noise_2.tres" type="Material" id=5]
-[ext_resource path="res://airplane/legalpad.jpg" type="Texture" id=6]
+[ext_resource path="res://airplane.tscn" type="PackedScene" id=6]
 [ext_resource path="res://asteroid_0.tscn" type="PackedScene" id=7]
 [ext_resource path="res://parallax.gd" type="Script" id=8]
 [ext_resource path="res://stars/stars.png" type="Texture" id=9]
@@ -48,21 +48,6 @@ shader_param/uv1_offset = Vector3( 4.487, -10.587, 0 )
 shader_param/uv2_scale = Vector3( 1, 1, 1 )
 shader_param/uv2_offset = Vector3( 0, 0, 0 )
 shader_param/texture_albedo = ExtResource( 9 )
-
-[sub_resource type="SpatialMaterial" id=1]
-flags_vertex_lighting = true
-params_diffuse_mode = 4
-params_specular_mode = 3
-albedo_color = Color( 1, 0.858824, 0.215686, 1 )
-albedo_texture = ExtResource( 6 )
-emission_enabled = true
-emission = Color( 1, 1, 1, 1 )
-emission_energy = 0.44
-emission_operator = 0
-emission_on_uv2 = false
-
-[sub_resource type="BoxShape" id=2]
-extents = Vector3( 0.0170055, 0.00147194, 0.0056475 )
 
 [node name="Spatial" type="Spatial"]
 
@@ -118,34 +103,10 @@ material/0 = SubResource( 7 )
 script = ExtResource( 8 )
 speed = 0.05
 
-[node name="airplane" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.357, 0.005, 0 )
+[node name="airplane" parent="." instance=ExtResource( 6 )]
 script = ExtResource( 1 )
-
-[node name="rotation" type="Spatial" parent="airplane"]
-
-[node name="mesh" type="MeshInstance" parent="airplane/rotation"]
-transform = Transform( -0.994026, 0.109144, -7.89183e-07, 0.109144, 0.994026, 5.60942e-08, 3.95295e-07, -1.51878e-08, -2, -0.00114447, -0.0106954, -0.000543505 )
-mesh = ExtResource( 2 )
-material/0 = SubResource( 1 )
-
-[node name="area" type="Area" parent="airplane/rotation"]
-
-[node name="CollisionShape" type="CollisionShape" parent="airplane/rotation/area"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00149605, 0, 0 )
-shape = SubResource( 2 )
 
 [node name="asteroid_0" parent="." instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13556, 0.0102676, 0 )
+script = ExtResource( 2 )
 camera = NodePath("../Camera")
-speed = 5.0
-
-[node name="asteroid_1" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.481018, 0, 0 )
-camera = NodePath("../Camera")
-speed = 10.0
-
-[node name="asteroid_2" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.213787, -0.150112, 0 )
-camera = NodePath("../Camera")
-speed = 2.5

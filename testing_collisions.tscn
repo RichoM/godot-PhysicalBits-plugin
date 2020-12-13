@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://testing_collisions.gd" type="Script" id=1]
+[ext_resource path="res://airplane.tscn" type="PackedScene" id=2]
+[ext_resource path="res://asteroid_0.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Environment" id=9]
+background_mode = 1
+ambient_light_color = Color( 1, 1, 1, 1 )
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="asteroid" parent="." instance=ExtResource( 3 )]
+
+[node name="airplane" parent="." instance=ExtResource( 2 )]
+
+[node name="camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.746826 )
+environment = SubResource( 9 )
+projection = 1
+size = 0.464504
+
+[node name="label" type="RichTextLabel" parent="."]
+anchor_left = -0.005
+anchor_right = 1.0
+anchor_bottom = 0.478
+margin_left = 23.0
+margin_top = 17.0
+margin_right = 12.0
+margin_bottom = 29.0
+text = "Probando probando"
+__meta__ = {
+"_edit_use_anchors_": false
+}
