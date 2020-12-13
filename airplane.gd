@@ -47,4 +47,5 @@ func _physics_process(delta):
 	if bodies.size() > 0:
 		colliding = true
 		var signs = (global_transform.origin - bodies[0].global_transform.origin).sign()
+		translate_object_local(Vector3.FORWARD * -0.25)
 		vel = Vector2(0.5 * signs.x, 0.5)
