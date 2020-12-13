@@ -9,10 +9,22 @@ var vel = Vector2(0.25, 0.5)
 
 var colliding = false
 
-func _ready():
-	pass
-
 func _process(delta):
+	if colliding:
+		gameover(delta)
+	else:
+		control(delta)
+		
+func gameover(delta):
+	vel.y += GRAVITY * delta
+	$rotation.rotation.z -= delta * 2
+	$rotation/mesh.rotation.x += delta * 3
+	translate_object_local(Vector3.RIGHT * vel.x * delta + Vector3.UP * vel.y * delta)
+	
+	if abs(vel.y) > MAX_SPEED:
+		get_tree().reload_current_scene()
+
+func control(delta):
 	if Input.is_action_pressed("movement_up"):
 		vel.y -= GRAVITY * 2.5 * delta
 	else:
@@ -28,14 +40,11 @@ func _process(delta):
 	$rotation/mesh.rotation.x = sin(time * 5) * abs(vel.y) * 0.4
 	
 	translate_object_local(Vector3.RIGHT * vel.x * delta + Vector3.UP * vel.y * delta)
-	
-	var m = $rotation/mesh.get_surface_material(0)
-	if colliding:
-		m.albedo_color = Color(1.0, 0.0, 0.0, 1.0)
-		print("COLLISION!")
-	else:
-		m.albedo_color = Color("ffdb37")
 
 func _physics_process(delta):
-	# TODO(Richo): Bounce off collision
-	colliding = $rotation/area.get_overlapping_bodies().size() > 0
+	if colliding: return
+	var bodies = $rotation/area.get_overlapping_bodies()
+	if bodies.size() > 0:
+		colliding = true
+		var signs = (global_transform.origin - bodies[0].global_transform.origin).sign()
+		vel = Vector2(0.5 * signs.x, 0.5)
