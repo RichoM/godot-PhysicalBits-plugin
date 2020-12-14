@@ -3,20 +3,19 @@ class_name Asteroid
 
 export var camera : NodePath
 
-const MIN_SPEED = 0.1
-const MAX_SPEED = 5
+const MAX_SPEED = 0.35
 
 var speed = 1.0
 
 func _ready():
-	speed = rand_range(MIN_SPEED, MAX_SPEED)
+	speed = rand_range(0, MAX_SPEED)
 	
 func _process(delta):
 	teleport()
 	$mesh.rotate_z(delta)
 	
 func _physics_process(delta):
-	move_and_slide(Vector3.LEFT * delta  * speed)
+	move_and_slide(Vector3.LEFT * speed)
 
 func teleport():
 	var cam : Camera = get_node(camera)
@@ -38,9 +37,11 @@ func teleport():
 	if self_right < cam_left:
 		global_transform.origin.x = cam_right + aabb.size.x/2
 		global_transform.origin.y = rand_range(cam_bottom, cam_top)
+		speed = rand_range(0, MAX_SPEED)
 	elif self_top < cam_bottom:
 		global_transform.origin.x = rand_range(cam_left, cam_right)
 		global_transform.origin.y = cam_top + aabb.size.y/2
 	elif self_bottom > cam_top:
 		global_transform.origin.x = rand_range(cam_left, cam_right)
 		global_transform.origin.y = cam_bottom - aabb.size.y/2
+
