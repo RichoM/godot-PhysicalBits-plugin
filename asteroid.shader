@@ -6,10 +6,6 @@ uniform float specular;
 uniform float metallic;
 uniform float roughness : hint_range(0,1);
 uniform float point_size : hint_range(0,128);
-uniform sampler2D texture_roughness : hint_white;
-uniform vec4 roughness_texture_channel;
-uniform sampler2D texture_normal : hint_normal;
-uniform float normal_scale : hint_range(-16,16);
 uniform sampler2D texture_ambient_occlusion : hint_white;
 uniform vec4 ao_texture_channel;
 uniform float ao_light_affect;
@@ -38,11 +34,8 @@ void fragment() {
 	vec4 albedo_tex = texture(texture_albedo,base_uv);
 	ALBEDO = albedo.rgb * albedo_tex.rgb;
 	METALLIC = metallic;
-	float roughness_tex = dot(texture(texture_roughness,base_uv),roughness_texture_channel);
-	ROUGHNESS = roughness_tex * roughness;
+	ROUGHNESS = roughness;
 	SPECULAR = specular;
-	NORMALMAP = texture(texture_normal,base_uv).rgb;
-	NORMALMAP_DEPTH = normal_scale;
 	AO = dot(texture(texture_ambient_occlusion,base_uv),ao_texture_channel);
 	AO_LIGHT_AFFECT = ao_light_affect;
 }

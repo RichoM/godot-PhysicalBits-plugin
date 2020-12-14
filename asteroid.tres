@@ -1,19 +1,30 @@
-[gd_resource type="SpatialMaterial" load_steps=5 format=2]
+[gd_resource type="ShaderMaterial" load_steps=6 format=2]
 
-[ext_resource path="res://rocks_ground_06/rocks_ground_06_rough_1k.jpg" type="Texture" id=1]
+[ext_resource path="res://asteroid.shader" type="Shader" id=1]
 [ext_resource path="res://rocks_ground_06/rocks_ground_06_ao_1k.jpg" type="Texture" id=2]
 [ext_resource path="res://rocks_ground_06/rocks_ground_06_diff_1k.jpg" type="Texture" id=3]
-[ext_resource path="res://rocks_ground_06/rocks_ground_06_nor_1k.jpg" type="Texture" id=4]
+
+[sub_resource type="OpenSimplexNoise" id=3]
+seed = 7
+octaves = 8
+
+[sub_resource type="NoiseTexture" id=4]
+seamless = true
+noise = SubResource( 3 )
 
 [resource]
-albedo_texture = ExtResource( 3 )
-roughness_texture = ExtResource( 1 )
-roughness_texture_channel = 4
-normal_enabled = true
-normal_scale = 1.0
-normal_texture = ExtResource( 4 )
-ao_enabled = true
-ao_light_affect = 0.0
-ao_texture = ExtResource( 2 )
-ao_on_uv2 = false
-ao_texture_channel = 0
+shader = ExtResource( 1 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/specular = 0.0
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = 1.0
+shader_param/ao_texture_channel = Plane( 1, 0, 0, 0 )
+shader_param/ao_light_affect = 1.5
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 1, 0.503, 1 )
+shader_param/uv2_scale = Vector3( 1, 1, 1 )
+shader_param/uv2_offset = Vector3( 0, 0, 0 )
+shader_param/texture_albedo = ExtResource( 3 )
+shader_param/texture_ambient_occlusion = ExtResource( 2 )
+shader_param/text_disp = SubResource( 4 )

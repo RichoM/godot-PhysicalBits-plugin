@@ -14,6 +14,9 @@
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
+background_energy = 0.0
+ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_energy = 0.0
 glow_intensity = 1.6
 glow_bloom = 0.2
 glow_blend_mode = 0
@@ -53,6 +56,7 @@ shader_param/texture_albedo = ExtResource( 9 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.396038, 0.59109, -0.702685, -0.532465, 0.771291, 0.3487, 0.748088, 0.236057, 0.620195, 0, 0, 0 )
+light_indirect_energy = 0.0
 
 [node name="airplane" parent="." instance=ExtResource( 6 )]
 script = ExtResource( 1 )
