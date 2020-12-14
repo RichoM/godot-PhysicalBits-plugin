@@ -2,9 +2,9 @@ extends Spatial
 
 export var root : NodePath
 export var camera : NodePath
-export var max_asteroids = 5
+export var max_asteroids = 7
 
-var asteroids = [preload("res://asteroid_0.tscn")]
+var asteroids = [preload("res://asteroid_0.tscn"), preload("res://asteroid_1.tscn")]
 var counter = 0
 
 

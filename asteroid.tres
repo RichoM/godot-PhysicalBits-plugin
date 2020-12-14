@@ -4,13 +4,13 @@
 [ext_resource path="res://rocks_ground_06/rocks_ground_06_ao_1k.jpg" type="Texture" id=2]
 [ext_resource path="res://rocks_ground_06/rocks_ground_06_diff_1k.jpg" type="Texture" id=3]
 
-[sub_resource type="OpenSimplexNoise" id=3]
+[sub_resource type="OpenSimplexNoise" id=1]
 seed = 7
 octaves = 8
 
-[sub_resource type="NoiseTexture" id=4]
+[sub_resource type="NoiseTexture" id=2]
 seamless = true
-noise = SubResource( 3 )
+noise = SubResource( 1 )
 
 [resource]
 shader = ExtResource( 1 )
@@ -27,4 +27,4 @@ shader_param/uv2_scale = Vector3( 1, 1, 1 )
 shader_param/uv2_offset = Vector3( 0, 0, 0 )
 shader_param/texture_albedo = ExtResource( 3 )
 shader_param/texture_ambient_occlusion = ExtResource( 2 )
-shader_param/text_disp = SubResource( 4 )
+shader_param/text_disp = SubResource( 2 )

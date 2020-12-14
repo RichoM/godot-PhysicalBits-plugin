@@ -5,14 +5,18 @@ export var camera : NodePath
 
 const MAX_SPEED = 0.35
 
-var speed = 1.0
+var speed := 1.0
+var rotation_speed := Vector2(1.0, 1.0)
 
 func _ready():
 	speed = rand_range(0, MAX_SPEED)
+	rotation_speed = Vector2(rand_range(-2, 2), rand_range(-2, 2))
+	scale_object_local(Vector3(rand_range(0.5, 1.5), rand_range(0.5, 1.5), rand_range(0.5, 1.5)))
 	
 func _process(delta):
 	teleport()
-	$mesh.rotate_z(delta)
+	rotate_x(rotation_speed.x * delta)
+	rotate_z(rotation_speed.y * delta)
 	
 func _physics_process(delta):
 	move_and_slide(Vector3.LEFT * speed)
