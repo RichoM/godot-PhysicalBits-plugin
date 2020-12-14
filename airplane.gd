@@ -9,6 +9,8 @@ var vel = Vector2(0.25, 0.5)
 
 var colliding = false
 
+signal game_over
+
 func _ready():
 	randomize()
 
@@ -50,5 +52,6 @@ func _physics_process(delta):
 	if bodies.size() > 0:
 		colliding = true
 		var signs = (global_transform.origin - bodies[0].global_transform.origin).sign()
+		vel = Vector2(0.5 * signs.x, 0.5 * signs.y)
 		translate_object_local(Vector3.FORWARD * -0.25)
-		vel = Vector2(0.5 * signs.x, 0.5)
+		emit_signal("game_over")
