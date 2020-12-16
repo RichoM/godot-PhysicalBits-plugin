@@ -1,6 +1,5 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://airplane.gd" type="Script" id=1]
 [ext_resource path="res://gui.tscn" type="PackedScene" id=2]
 [ext_resource path="res://space_noise/space_noise_1.tres" type="Material" id=3]
 [ext_resource path="res://space_noise/space_noise_0.tres" type="Material" id=4]
@@ -59,7 +58,6 @@ transform = Transform( 0.396038, 0.59109, -0.702685, -0.532465, 0.771291, 0.3487
 light_indirect_energy = 0.0
 
 [node name="airplane" parent="." instance=ExtResource( 6 )]
-script = ExtResource( 1 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.054644, 0, 0.5 )
@@ -121,4 +119,7 @@ camera = NodePath("..")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GUI" parent="CanvasLayer" instance=ExtResource( 2 )]
+[connection signal="bullet_time_begin" from="airplane" to="Camera" method="_on_airplane_bullet_time_begin"]
+[connection signal="bullet_time_end" from="airplane" to="Camera" method="_on_airplane_bullet_time_end"]
+[connection signal="bullet_time_score" from="airplane" to="CanvasLayer/GUI" method="_on_airplane_bullet_time_score"]
 [connection signal="game_over" from="airplane" to="CanvasLayer/GUI" method="_on_airplane_game_over"]

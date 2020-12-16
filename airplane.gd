@@ -8,8 +8,14 @@ var time = 0
 var vel = Vector2(0.25, 0.5)
 
 var colliding = false
+var proximity_counter = 0
+var max_proximity_counter = 0
+var bullet_time_ms = 0
 
 signal game_over
+signal bullet_time_begin
+signal bullet_time_end
+signal bullet_time_score
 
 func _ready():
 	randomize()
@@ -45,6 +51,9 @@ func control(delta):
 	$rotation/mesh.rotation.x = sin(time * 5) * abs(vel.y) * 0.4
 	
 	translate_object_local(Vector3.RIGHT * vel.x * delta + Vector3.UP * vel.y * delta)
+	
+	if proximity_counter > 0:
+		bullet_time_ms += round(delta*100)
 
 func _physics_process(delta):
 	if colliding: return
@@ -55,3 +64,22 @@ func _physics_process(delta):
 		vel = Vector2(0.5 * signs.x, 0.5 * signs.y)
 		translate_object_local(Vector3.FORWARD * -0.25)
 		emit_signal("game_over")
+
+
+func _on_proximity_sensor_body_entered(body):
+	proximity_counter += 1
+	if proximity_counter > max_proximity_counter:
+		max_proximity_counter = proximity_counter
+	if proximity_counter == 1:
+		bullet_time_ms = 0
+		Engine.time_scale = 0.5
+		emit_signal("bullet_time_begin")
+
+
+func _on_proximity_sensor_body_exited(body):
+	proximity_counter -= 1	
+	if proximity_counter == 0:
+		Engine.time_scale = 1
+		emit_signal("bullet_time_end")
+		emit_signal("bullet_time_score", round(100 * bullet_time_ms * max_proximity_counter))
+		max_proximity_counter = 0
