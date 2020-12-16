@@ -119,6 +119,7 @@ camera = NodePath("..")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GUI" parent="CanvasLayer" instance=ExtResource( 2 )]
+exclamation_messages = [ "MARVELOUS!", "AMAZING!", "OUTSTANDING!", "AWESOME!", "GREAT!", "INCREDIBLE!", "STUNNING!", "IMPRESSIVE!", "NICE!", "WOW!" ]
 [connection signal="bullet_time_begin" from="airplane" to="Camera" method="_on_airplane_bullet_time_begin"]
 [connection signal="bullet_time_end" from="airplane" to="Camera" method="_on_airplane_bullet_time_end"]
 [connection signal="bullet_time_score" from="airplane" to="CanvasLayer/GUI" method="_on_airplane_bullet_time_score"]
