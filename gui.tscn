@@ -1,18 +1,24 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ui_font/Tomorrow-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://gui.gd" type="Script" id=2]
+[ext_resource path="res://ui_font/Tomorrow-Bold.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 28
+size = 42
+outline_size = 5
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 36
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=2]
-size = 24
+[sub_resource type="DynamicFont" id=3]
+size = 30
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
@@ -29,6 +35,21 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+exclamation_messages = [ "MARVELOUS!", "AMAZING!", "OUTSTANDING!", "AWESOME!", "GREAT!", "INCREDIBLE!", "STUNNING!", "IMPRESSIVE!" ]
+
+[node name="msg" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -242.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0.643137, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="score_list" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -39,8 +60,8 @@ __meta__ = {
 
 [node name="score" type="Label" parent="score_list"]
 margin_right = 1013.0
-margin_bottom = 34.0
-custom_fonts/font = SubResource( 1 )
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "100"
 align = 2
@@ -49,10 +70,10 @@ __meta__ = {
 }
 
 [node name="max_score" type="Label" parent="score_list"]
-margin_top = 38.0
+margin_top = 48.0
 margin_right = 1013.0
-margin_bottom = 67.0
-custom_fonts/font = SubResource( 2 )
+margin_bottom = 84.0
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.670588, 0.670588, 0.670588, 1 )
 text = "100"
 align = 2
