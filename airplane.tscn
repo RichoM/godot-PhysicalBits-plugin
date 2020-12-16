@@ -32,5 +32,5 @@ material/0 = SubResource( 1 )
 [node name="area" type="Area" parent="rotation"]
 
 [node name="CollisionShape" type="CollisionShape" parent="rotation/area"]
-transform = Transform( -0.994026, 0.109144, -7.89183e-07, 0.109144, 0.994026, 5.60943e-08, 3.95295e-07, -1.51878e-08, -2, -0.00114447, -0.0106954, -0.000543505 )
+transform = Transform( -0.994026, 0.109144, -1.94707e-06, 0.109144, 0.994026, 1.40235e-07, 3.90149e-07, -1.46228e-08, -5, -0.00114447, -0.0106954, -0.000543505 )
 shape = SubResource( 2 )
