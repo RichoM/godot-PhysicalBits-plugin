@@ -14,6 +14,8 @@ func _ready():
 	scale_object_local(Vector3(rand_range(0.5, 1.5), rand_range(0.5, 1.5), rand_range(0.5, 1.5)))
 	
 func _process(delta):
+	if global_transform.origin.z != 0:
+		global_transform.origin.z = 0
 	teleport()
 	rotate_x(rotation_speed.x * delta)
 	rotate_z(rotation_speed.y * delta)
