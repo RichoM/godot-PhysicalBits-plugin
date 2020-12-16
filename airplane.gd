@@ -53,7 +53,7 @@ func control(delta):
 	translate_object_local(Vector3.RIGHT * vel.x * delta + Vector3.UP * vel.y * delta)
 	
 	if proximity_counter > 0:
-		bullet_time_ms += delta*100
+		bullet_time_ms += round(delta*100)
 
 func _physics_process(delta):
 	if colliding: return
