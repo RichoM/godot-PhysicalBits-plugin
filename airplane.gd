@@ -70,16 +70,17 @@ func _on_proximity_sensor_body_entered(body):
 	proximity_counter += 1
 	if proximity_counter > max_proximity_counter:
 		max_proximity_counter = proximity_counter
-	if proximity_counter == 1:
+	if proximity_counter == 2:
 		bullet_time_ms = 0
 		Engine.time_scale = 0.5
 		emit_signal("bullet_time_begin")
 
 
 func _on_proximity_sensor_body_exited(body):
-	proximity_counter -= 1	
+	proximity_counter -= 1
 	if proximity_counter == 0:
 		Engine.time_scale = 1
-		emit_signal("bullet_time_end")
-		emit_signal("bullet_time_score", round(100 * bullet_time_ms * max_proximity_counter))
-		max_proximity_counter = 0
+		if max_proximity_counter >= 2:
+			emit_signal("bullet_time_end")
+			emit_signal("bullet_time_score", round(100 * bullet_time_ms * max_proximity_counter))
+			max_proximity_counter = 0
