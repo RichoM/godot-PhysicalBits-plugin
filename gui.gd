@@ -55,9 +55,11 @@ func _on_airplane_game_over():
 		update_max_score(score)
 
 func _on_airplane_bullet_time_score(score):
-	if score < 3500 or game_over: return
-	
+	if game_over: return
 	msg_counter = 10
-	var exclamation = exclamation_messages[randi() % exclamation_messages.size()]
-	$msg.text = exclamation + "\n+" + str(score)
+	var msg := "+" + str(score)
+	if score >= 3000:
+		var exclamation = exclamation_messages[randi() % exclamation_messages.size()]
+		msg = exclamation + "\n" + msg
+	$msg.text = msg
 	update_score(score)
