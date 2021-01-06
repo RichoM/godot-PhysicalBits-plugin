@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Asteroid",
 "language": "GDScript",
 "path": "res://asteroid.gd"
+}, {
+"base": "Label",
+"class": "UziClient",
+"language": "GDScript",
+"path": "res://uzi.gd"
 } ]
 _global_script_class_icons={
-"Asteroid": ""
+"Asteroid": "",
+"UziClient": ""
 }
 
 [application]
