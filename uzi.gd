@@ -51,6 +51,7 @@ func start_client():
 		socket.set_dest_address(IP_SERVER, PORT_SERVER)
 		
 func _exit_tree():
+	print("Closing socket")
 	socket.close()
 
 func get_data(key, default = null):
