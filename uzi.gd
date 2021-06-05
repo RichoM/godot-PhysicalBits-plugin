@@ -7,11 +7,13 @@ var PORT_CLIENT = 3234
 var socket = PacketPeerUDP.new()
 
 var data = {}
+var previous_msg_ts = 0
 
 func _ready():
 	start_client()
 
 func _process(_delta):
+	if socket.get_available_packet_count() == 0: return
 	while socket.get_available_packet_count() > 0:
 		var array_bytes = socket.get_packet()
 		var msg = array_bytes.get_string_from_utf8()
@@ -29,6 +31,13 @@ func _process(_delta):
 	var new_text = ""
 	for key in keys:
 		new_text += "%s = %f\n" % [key, data[key]]
+		
+	var now = OS.get_ticks_msec()
+	if previous_msg_ts > 0:
+		var diff = now - previous_msg_ts
+		new_text += "\n%f ms" % [diff]
+	previous_msg_ts = now
+	
 	text = new_text
 	
 func fix_json_floats(value):
