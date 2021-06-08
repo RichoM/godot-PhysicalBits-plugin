@@ -33,7 +33,7 @@ Asimismo, la interfaz de programación visual que provee Physical Bits es __idea
 # Ejemplo
 ## Paper Airplane
 
-Este ejemplo consiste de un videojuego muy sencillo controlado mediante sensores conectados a un [Arduino UNO](ACAACA). Puede verse en funcionamiento en el siguiente video:
+Este ejemplo consiste de un videojuego muy sencillo controlado mediante sensores conectados a un [Arduino UNO](https://store.arduino.cc/usa/arduino-uno-rev3). Puede verse en funcionamiento en el siguiente video:
 
 <p align="center">  
   <a href="https://youtu.be/V3eIrDwEnkA">
