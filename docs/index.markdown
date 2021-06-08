@@ -5,13 +5,13 @@
 layout: home
 ---
 
-![godot_physicalbits](imgs/godot_physicalbits.svg)
+![godot_physicalbits]({{ site.baseurl }}/imgs/godot_physicalbits.svg)
 
 El objetivo de este plugin es vincular al motor gráfico [Godot](https://godotengine.org/) con el entorno de programación para robótica educativa [Physical Bits](https://gira.github.io/PhysicalBits/).
 
 [Godot](https://godotengine.org/) es un motor gráfico ideal para el desarrollo de videojuegos 2D y 3D. Soporta múltiples plataformas, es libre y de código abierto, y permite exportar los videojuegos creados a PC, teléfonos móviles, y HTML5.
 
-[![godot_screenshot](imgs/godot_screenshot.jpg)](https://godotengine.org/)
+[![godot_screenshot]({{ site.baseurl }}/imgs/godot_screenshot.jpg)](https://godotengine.org/)
 > Godot permite la creación de mundos digitales en 2D y 3D.
 
 <hr>
@@ -19,7 +19,7 @@ El objetivo de este plugin es vincular al motor gráfico [Godot](https://godoten
 
 [Physical Bits](https://gira.github.io/PhysicalBits/), por otro lado, es un entorno de programación para robótica educativa diseñado especialmente para facilitar la programación de dispositivos físicos a usuarios no experimentados.
 
-[![line_follower](./imgs/line_follower.gif)](https://gira.github.io/PhysicalBits/)
+[![line_follower]({{ site.baseurl }}/imgs/line_follower.gif)](https://gira.github.io/PhysicalBits/)
 > Physical Bits facilita la programación de robots y dispositivos físicos.
 
 <hr>
@@ -37,7 +37,7 @@ Este ejemplo consiste de un videojuego muy sencillo controlado mediante sensores
 
 <p align="center">  
   <a href="https://youtu.be/V3eIrDwEnkA">
-    <img src="./imgs/paperairplane_youtube.png">  
+    <img src="{{ site.baseurl }}/imgs/paperairplane_youtube.png">  
   </a>
 </p>
 
@@ -53,10 +53,10 @@ Asimismo, se cuenta con un LED en el pin digital 8 que se enciende cuando alguno
 
 El circuito completo usado en este ejemplo se puede ver a continuación (diagrama construido mediante la herramienta [fritzing](https://fritzing.org/)):
 
-[![img](./imgs/paper_airplane_bb.svg)](https://fritzing.org/)
+[![img]({{ site.baseurl }}/imgs/paper_airplane_bb.svg)](https://fritzing.org/)
 
 El programa instalado en el Arduino UNO consiste de una sola tarea que se ejecuta 1000 veces por segundo. Esta tarea tiene el único objetivo de chequear los valores de los sensores antes mencionados y establecer la variable `action` en caso de que alguno esté activado. Esta variable `action` será luego utilizada en el script del avión (en godot) para controlar la navegación.
 
 Como se puede ver a continuación, el programa ejecutándose en el Arduino UNO es muy fácil de entender:
 
-![paperairplane_blocks](./imgs/paperairplane_blocks_es.svg)
+![paperairplane_blocks]({{ site.baseurl }}/imgs/paperairplane_blocks_es.svg)
