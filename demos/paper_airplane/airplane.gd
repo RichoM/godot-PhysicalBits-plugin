@@ -1,8 +1,8 @@
 extends Spatial
 
 const GRAVITY = -1
-const MIN_SPEED = deg2rad(-75)
-const MAX_SPEED = deg2rad(75)
+const MIN_SPEED = deg2rad(-55)
+const MAX_SPEED = deg2rad(55)
 
 export (NodePath) onready var uzi  = get_node(uzi) as UziClient
 

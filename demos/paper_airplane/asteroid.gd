@@ -3,7 +3,7 @@ class_name Asteroid
 
 export var camera : NodePath
 
-const MAX_SPEED = 0.35
+const MAX_SPEED = 0.15
 
 var speed := 1.0
 var rotation_speed := Vector2(1.0, 1.0)
