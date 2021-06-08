@@ -13,18 +13,18 @@ func _ready():
 	start_client()
 
 func _process(_delta):
-	if socket.get_available_packet_count() == 0: return
-	while socket.get_available_packet_count() > 0:
-		var array_bytes = socket.get_packet()
-		var msg = array_bytes.get_string_from_utf8()
-		var json = JSON.parse(msg).result
-		var new_data = {}
-		for pin in json["pins"]["elements"]:
-			new_data[pin["name"]] = pin["value"]
-		for global in json["globals"]["elements"]:
-			new_data[global["name"]] = fix_json_floats(global["value"])
-		# TODO(Richo): Signal event
-		data = new_data
+	var packet = get_latest_packet()
+	if not packet: return
+	
+	var msg = packet.get_string_from_utf8()
+	var json = JSON.parse(msg).result
+	var new_data = {}
+	for pin in json["pins"]["elements"]:
+		new_data[pin["name"]] = pin["value"]
+	for global in json["globals"]["elements"]:
+		new_data[global["name"]] = fix_json_floats(global["value"])
+	# TODO(Richo): Signal event
+	data = new_data
 	
 	var keys = data.keys()
 	keys.sort()
@@ -39,6 +39,12 @@ func _process(_delta):
 	previous_msg_ts = now
 	
 	text = new_text
+
+func get_latest_packet():	
+	var packet = null
+	while socket.get_available_packet_count() > 0:
+		packet = socket.get_packet()
+	return packet
 	
 func fix_json_floats(value):
 	if typeof(value) == TYPE_DICTIONARY:
