@@ -5,13 +5,13 @@
 layout: home
 ---
 
-![godot_physicalbits](./imgs/godot_physicalbits.svg)
+![godot_physicalbits](imgs/godot_physicalbits.svg)
 
 El objetivo de este plugin es vincular al motor gráfico [Godot](https://godotengine.org/) con el entorno de programación para robótica educativa [Physical Bits](https://gira.github.io/PhysicalBits/).
 
 [Godot](https://godotengine.org/) es un motor gráfico ideal para el desarrollo de videojuegos 2D y 3D. Soporta múltiples plataformas, es libre y de código abierto, y permite exportar los videojuegos creados a PC, teléfonos móviles, y HTML5.
 
-[![godot_screenshot](./imgs/godot_screenshot.jpg)](https://godotengine.org/)
+[![godot_screenshot](imgs/godot_screenshot.jpg)](https://godotengine.org/)
 > Godot permite la creación de mundos digitales en 2D y 3D.
 
 <hr>
