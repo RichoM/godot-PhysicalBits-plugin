@@ -20,7 +20,7 @@ El objetivo de este plugin...
 
 Este plugin permite ...
 
-## DEMO - Paper Airplane
+# DEMO - Paper Airplane
 
 <p align="center">  
   <a href="https://youtu.be/V3eIrDwEnkA">
