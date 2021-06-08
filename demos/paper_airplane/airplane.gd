@@ -4,7 +4,7 @@ const GRAVITY = -1
 const MIN_SPEED = deg2rad(-55)
 const MAX_SPEED = deg2rad(55)
 
-export (NodePath) onready var uzi  = get_node(uzi) as UziClient
+export (NodePath) onready var pbits  = get_node(pbits) as PhysicalBits
 
 var time = 0
 var vel = Vector2(0.25, 0.5)
@@ -38,7 +38,7 @@ func gameover(delta):
 		get_tree().reload_current_scene()
 
 func control(delta):
-	if uzi.get_data("action", 0) == 1 or Input.is_action_pressed("movement_up"):
+	if pbits.get_data("action", 0) == 1 or Input.is_action_pressed("movement_up"):
 		vel.y -= GRAVITY * 2.5 * delta
 	else:
 		vel.y += GRAVITY * delta

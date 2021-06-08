@@ -1,5 +1,5 @@
 extends Label
-class_name UziClient
+class_name PhysicalBits
 
 var IP_SERVER = "127.0.0.1"
 var PORT_SERVER = 3232
@@ -40,7 +40,7 @@ func _process(_delta):
 	
 	text = new_text
 
-func get_latest_packet():	
+func get_latest_packet():
 	var packet = null
 	while socket.get_available_packet_count() > 0:
 		packet = socket.get_packet()

@@ -15,13 +15,13 @@ _global_script_classes=[ {
 "path": "res://asteroid.gd"
 }, {
 "base": "Label",
-"class": "UziClient",
+"class": "PhysicalBits",
 "language": "GDScript",
 "path": "res://uzi.gd"
 } ]
 _global_script_class_icons={
 "Asteroid": "",
-"UziClient": ""
+"PhysicalBits": ""
 }
 
 [application]
