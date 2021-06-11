@@ -35,11 +35,7 @@ Asimismo, la interfaz de programación visual que provee Physical Bits es __idea
 
 Este ejemplo consiste de un videojuego muy sencillo controlado mediante sensores conectados a un [Arduino UNO](https://store.arduino.cc/usa/arduino-uno-rev3). Puede verse en funcionamiento en el siguiente video:
 
-<p align="center">  
-  <a href="https://youtu.be/V3eIrDwEnkA">
-    <img src="{{ site.baseurl }}/imgs/paperairplane_youtube.png">  
-  </a>
-</p>
+<iframe width="100%" height="416" src="https://www.youtube.com/embed/V3eIrDwEnkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Como se puede observar en el video, el juego consiste en un avión de papel que navega por el espacio ganando puntos en función de cuánto tiempo pase evitando chocar con asteroides.
 
