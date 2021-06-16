@@ -74,3 +74,12 @@ func _exit_tree():
 func get_data(key, default = null):
 	if data.has(key): return data[key]["value"]
 	return default
+	
+func set_data(key, value):
+	var type = PIN
+	if data.has(key): type = data[key]["type"]
+	var msg = {"name": key, "value": value}
+	if type == PIN: msg["action"] = "set_pin_value"
+	elif type == GLOBAL: msg["action"] = "set_global_value"
+	var packet = JSON.print(msg).to_utf8()
+	socket.put_packet(packet)
