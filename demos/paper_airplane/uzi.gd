@@ -9,10 +9,12 @@ var socket = PacketPeerUDP.new()
 var data = {}
 var previous_msg_ts = 0
 
+enum {PIN, GLOBAL}
+
 func _ready():
 	start_client()
 
-func _process(_delta):
+func _process(_delta):	
 	var packet = get_latest_packet()
 	if not packet: return
 	
@@ -20,9 +22,9 @@ func _process(_delta):
 	var json = JSON.parse(msg).result
 	var new_data = {}
 	for pin in json["pins"]["elements"]:
-		new_data[pin["name"]] = pin["value"]
+		new_data[pin["name"]] = {"value": pin["value"], "type": PIN}
 	for global in json["globals"]["elements"]:
-		new_data[global["name"]] = fix_json_floats(global["value"])
+		new_data[global["name"]] = {"value": fix_json_floats(global["value"]), "type": GLOBAL}
 	# TODO(Richo): Signal event
 	data = new_data
 	
@@ -30,7 +32,7 @@ func _process(_delta):
 	keys.sort()
 	var new_text = ""
 	for key in keys:
-		new_text += "%s = %f\n" % [key, data[key]]
+		new_text += "%s = %f\n" % [key, data[key]["value"]]
 		
 	var now = OS.get_ticks_msec()
 	if previous_msg_ts > 0:
@@ -70,5 +72,5 @@ func _exit_tree():
 	socket.close()
 
 func get_data(key, default = null):
-	if data.has(key): return data[key]
+	if data.has(key): return data[key]["value"]
 	return default
