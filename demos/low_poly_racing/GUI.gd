@@ -2,6 +2,7 @@ extends Control
 
 export (NodePath) onready var player  = get_node(player) as Car
 export (NodePath) onready var turns = get_node(turns) as Spatial
+export (NodePath) onready var pbits = get_node(pbits) as PhysicalBits
 
 onready var lap_counter : Label = $left_col/lap_counter
 onready var cur_time : Label = $right_col/cur_time
@@ -50,10 +51,15 @@ func _on_play_button_pressed():
 	player.input_enabled = true
 	$overlay.hide()
 	print("PLAY!")
+	pbits.set_data("play", 1)
 
 
 func _on_turn_triggered(type):
-	if type == "R": turn_sign.flip_h = false
-	elif type == "L": turn_sign.flip_h = true
+	if type == "R": 
+		turn_sign.flip_h = false
+		pbits.set_data("turn", 1)
+	elif type == "L": 
+		turn_sign.flip_h = true
+		pbits.set_data("turn", -1)
 	turn_sign.show()
 	turn_sign_timer.start()
