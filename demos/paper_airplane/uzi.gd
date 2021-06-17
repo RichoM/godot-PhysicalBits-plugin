@@ -14,7 +14,7 @@ enum {PIN, GLOBAL}
 func _ready():
 	start_client()
 
-func _process(_delta):	
+func _process(_delta):
 	var packet = get_latest_packet()
 	if not packet: return
 	
@@ -34,12 +34,6 @@ func _process(_delta):
 	for key in keys:
 		new_text += "%s = %f\n" % [key, data[key]["value"]]
 		
-	var now = OS.get_ticks_msec()
-	if previous_msg_ts > 0:
-		var diff = now - previous_msg_ts
-		new_text += "\n%f ms" % [diff]
-	previous_msg_ts = now
-	
 	text = new_text
 
 func get_latest_packet():
