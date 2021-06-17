@@ -1,13 +1,13 @@
 extends Label
 class_name PhysicalBits
 
-var IP_SERVER = "127.0.0.1"
-var PORT_SERVER = 3232
-var PORT_CLIENT = 3234
-var socket = PacketPeerUDP.new()
+export var IP_SERVER = "127.0.0.1"
+export var PORT_SERVER = 3232
+export var PORT_CLIENT = 3234
+export var display_data : bool = true
 
+var socket = PacketPeerUDP.new()
 var data = {}
-var previous_msg_ts = 0
 
 enum {PIN, GLOBAL}
 
@@ -28,12 +28,12 @@ func _process(_delta):
 	# TODO(Richo): Signal event
 	data = new_data
 	
-	var keys = data.keys()
-	keys.sort()
 	var new_text = ""
-	for key in keys:
-		new_text += "%s = %f\n" % [key, data[key]["value"]]
-		
+	if display_data:
+		var keys = data.keys()
+		keys.sort()
+		for key in keys:
+			new_text += "%s = %f\n" % [key, data[key]["value"]]			
 	text = new_text
 
 func get_latest_packet():

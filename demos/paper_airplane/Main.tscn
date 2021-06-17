@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://uzi.tscn" type="PackedScene" id=1]
+[ext_resource path="res://PhysicalBits.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gui.tscn" type="PackedScene" id=2]
 [ext_resource path="res://space_noise/space_noise_1.tres" type="Material" id=3]
 [ext_resource path="res://space_noise/space_noise_0.tres" type="Material" id=4]

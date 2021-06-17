@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Label",
 "class": "PhysicalBits",
 "language": "GDScript",
-"path": "res://uzi.gd"
+"path": "res://PhysicalBits.gd"
 } ]
 _global_script_class_icons={
 "Asteroid": "",
