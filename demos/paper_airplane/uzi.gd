@@ -21,9 +21,9 @@ func _process(_delta):
 	var msg = packet.get_string_from_utf8()
 	var json = JSON.parse(msg).result
 	var new_data = {}
-	for pin in json["pins"]["elements"]:
+	for pin in json["pins"]:
 		new_data[pin["name"]] = {"value": pin["value"], "type": PIN}
-	for global in json["globals"]["elements"]:
+	for global in json["globals"]:
 		new_data[global["name"]] = {"value": fix_json_floats(global["value"]), "type": GLOBAL}
 	# TODO(Richo): Signal event
 	data = new_data
