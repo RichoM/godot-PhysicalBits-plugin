@@ -59,7 +59,7 @@ Como se puede ver a continuación, el programa ejecutándose en el Arduino UNO e
 
 El código del lado de godot es muy extenso como para incluirlo en este documento, pero a continuación se puede observar como la función encargada del control del avión utiliza el valor de la variable `action` como input:
 
-[![paperairplane_godot]({{ site.baseurl }}/imgs/paperairplane_godot.png)]({{ site.baseurl }}/imgs/paperairplane_godot.png)
+[![paperairplane_godot]({{ site.baseurl }}/imgs/paperairplane_godot.PNG)]({{ site.baseurl }}/imgs/paperairplane_godot.PNG)
 
 # Ejemplo 2 - Low Poly Racing
 ## Uso de actuadores
@@ -93,4 +93,4 @@ A pesar de ser un poco más complicado que el ejemplo anterior, la interfaz de p
 
 El código del lado del programa en godot es demasiado extenso como para incluirlo completo en este documento, pero se observa a continuación el extracto donde el juego interactúa con Physical Bits modificando las variables correspondientes:
 
-[![lowpolyracing_godot]({{ site.baseurl }}/imgs/lowpolyracing_godot.png)]({{ site.baseurl }}/imgs/lowpolyracing_godot.png)
+[![lowpolyracing_godot]({{ site.baseurl }}/imgs/lowpolyracing_godot.PNG)]({{ site.baseurl }}/imgs/lowpolyracing_godot.PNG)
