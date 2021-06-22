@@ -13,7 +13,7 @@
 
 Desde el inspector se pueden configurar los parámetros de conexión del plugin (aunque normalmente no debería ser necesario).
 
-![pbits_inspector]({{ site.baseurl }}/imgs/pbits_inspector.png)
+![pbits_inspector]({{ site.baseurl }}/imgs/pbits_inspector.PNG)
 
 Para acceder a los valores de los pines y variables del programa en el dispositivo:
 
