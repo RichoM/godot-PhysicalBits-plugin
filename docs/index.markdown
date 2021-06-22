@@ -9,7 +9,6 @@ El objetivo de este plugin es vincular al motor gráfico [Godot](https://godoten
 > Godot permite la creación de mundos digitales en 2D y 3D.
 
 <hr>
-<br>
 
 [Physical Bits](https://gira.github.io/PhysicalBits/), por otro lado, es un entorno de programación para robótica educativa diseñado especialmente para facilitar la programación de dispositivos físicos a usuarios no experimentados.
 
@@ -17,7 +16,6 @@ El objetivo de este plugin es vincular al motor gráfico [Godot](https://godoten
 > Physical Bits facilita la programación de robots y dispositivos físicos.
 
 <hr>
-<br>
 
 Este plugin permite vincular ambas herramientas, haciendo posible el desarrollo de __experiencias audiovisuales que incluyan además algún tipo de interacción física__. Videojuegos innovadores, controles experimentales, arte digital interactivo, interfaces físicas, son potenciales ejemplos de aplicación para este plugin.
 

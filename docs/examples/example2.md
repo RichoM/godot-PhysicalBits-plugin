@@ -1,13 +1,19 @@
+---
+sort: 2
+---
 
-# Ejemplo 2 - Low Poly Racing
-## Uso de actuadores
+# Uso de actuadores (Low Poly Racing)
+
+## Descripción
 
 Este ejemplo consiste de otro videojuego sencillo pero en lugar de usar el [Arduino UNO](https://store.arduino.cc/usa/arduino-uno-rev3) como un control experimental vamos a usarlo para mostrar información al jugador de lo que sucede en el juego. Para mostrar esta información usaremos una serie de actuadores. Puede verse en el siguiente video:
 
-<iframe width="100%" height="416" src="https://www.youtube.com/embed/_SzpKWqWwGU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="100%" height="515" src="https://www.youtube.com/embed/_SzpKWqWwGU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <br>
 
 Como se observa en el video, se trata de un simple videojuego de carreras donde el objetivo es recorrer la pista en el menor tiempo posible.
+
+## Componentes
 
 El Arduino UNO cuenta con los siguientes componentes:
 
@@ -18,6 +24,8 @@ El Arduino UNO cuenta con los siguientes componentes:
 El circuito completo usado en este ejemplo se puede ver a continuación (diagrama construido con la herramienta [fritzing](https://fritzing.org/)):
 
 [![low_poly_racing_bb]({{ site.baseurl }}/imgs/low_poly_racing_bb.svg)]({{ site.baseurl }}/low_poly_racing.fzz)
+
+## Código
 
 El programa instalado en el Arduino UNO es un poco más complejo en este caso. Consta de dos tareas concurrentes y un procedimiento.
 

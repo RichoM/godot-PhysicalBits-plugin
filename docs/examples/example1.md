@@ -1,11 +1,19 @@
-# Ejemplo 1 - Paper Airplane
-## Uso de sensores
+---
+sort: 1
+---
+
+# Uso de sensores (Paper Airplane)
+
+## Descripción
 
 Este ejemplo consiste de un videojuego muy sencillo controlado mediante sensores conectados a un [Arduino UNO](https://store.arduino.cc/usa/arduino-uno-rev3). Puede verse en funcionamiento en el siguiente video:
 
-<iframe width="100%" height="416" src="https://www.youtube.com/embed/V3eIrDwEnkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="100%" height="515" src="https://www.youtube.com/embed/V3eIrDwEnkA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <br>
+
 Como se puede observar en el video, el juego consiste en un avión de papel que navega por el espacio ganando puntos en función de cuánto tiempo pase evitando chocar con asteroides.
+
+## Componentes
 
 El comportamiento del avión es muy simple: está en permanente caída libre EXCEPTO cuando se activa alguno de los siguientes sensores:
 
@@ -18,6 +26,8 @@ Asimismo, se cuenta con un LED en el pin digital 8 que se enciende cuando alguno
 El circuito completo usado en este ejemplo se puede ver a continuación (diagrama construido con la herramienta [fritzing](https://fritzing.org/)):
 
 [![paper_airplane_bb]({{ site.baseurl }}/imgs/paper_airplane_bb.svg)]({{ site.baseurl }}/paper_airplane.fzz)
+
+## Código
 
 El programa instalado en el Arduino UNO consiste de una sola tarea que se ejecuta 1000 veces por segundo. Esta tarea tiene el único objetivo de chequear los valores de los sensores antes mencionados y establecer la variable `action` en caso de que alguno esté activado. Esta variable `action` será luego utilizada en el script del avión (en godot) para controlar la navegación.
 
