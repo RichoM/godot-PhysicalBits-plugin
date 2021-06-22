@@ -87,7 +87,7 @@ En primer lugar, la tarea `semaphore` se encarga de controlar la activación sec
 
 En segundo lugar, la tarea `turn sign` se encarga de controlar los motores que levantan los carteles de giro. La primer acción que realiza, entonces, es mover los servomotores a su posición inicial. Para indicar la cercanía de una curva el programa en godot utiliza la variable `turn`, estableciendo su valor en 1 para indicar una giro a la derecha y -1 para indicar un giro a la izquierda. Por eso, luego de mover los motores a su posición inicial, la tarea entra en un bucle infinito y bloquea su ejecución a la espera de que la variable `turn` tome algún valor distinto de cero. Si eso sucede se fija si el valor es positivo o negativo, moviendo el servomotor correspondiente. Luego espera durante 1 segundo y medio antes de volver el motor a su posición inicial y establecer la variable `turn` nuevamente a cero.
 
-A pesar de ser un poco más complicado que el ejemplo anterio, la interfaz de programación por bloques permite entender el código instalado en el Arduino UNO sin mayores problemas:
+A pesar de ser un poco más complicado que el ejemplo anterior, la interfaz de programación por bloques permite entender el código instalado en el Arduino UNO sin mayores problemas:
 
 [![lowpolyracing_blocks]({{ site.baseurl }}/imgs/lowpolyracing_blocks_es.svg)]({{ site.baseurl }}/imgs/lowpolyracing_blocks_es.svg)
 
