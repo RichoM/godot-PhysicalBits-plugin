@@ -4,6 +4,12 @@ sort: 1
 
 # Uso de sensores (Paper Airplane)
 
+<a class="btn btn-large" href="https://github.com/RichoM/godot-PhysicalBits-plugin/tree/main/demos/paper_airplane" type="button"
+   style="font-size: larger; width: 100%; text-align: center;">
+  <i class="fa fa-folder-open mr-2" style="font-size: inherit;"></i>
+  <span class="mr-2">Código fuente del proyecto</span>
+</a>
+
 ## Descripción
 
 Este ejemplo consiste de un videojuego muy sencillo controlado mediante sensores conectados a un [Arduino UNO](https://store.arduino.cc/usa/arduino-uno-rev3). Puede verse en funcionamiento en el siguiente video:

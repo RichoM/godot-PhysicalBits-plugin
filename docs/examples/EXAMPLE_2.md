@@ -4,6 +4,12 @@ sort: 2
 
 # Uso de actuadores (Low Poly Racing)
 
+<a class="btn btn-large" href="https://github.com/RichoM/godot-PhysicalBits-plugin/tree/main/demos/low_poly_racing" type="button"
+   style="font-size: larger; width: 100%; text-align: center;">
+  <i class="fa fa-folder-open mr-2" style="font-size: inherit;"></i>
+  <span class="mr-2">Código fuente del proyecto</span>
+</a>
+
 ## Descripción
 
 Este ejemplo consiste de otro videojuego sencillo pero en lugar de usar el [Arduino UNO](https://store.arduino.cc/usa/arduino-uno-rev3) como un control experimental vamos a usarlo para mostrar información al jugador de lo que sucede en el juego. Para mostrar esta información usaremos una serie de actuadores.
