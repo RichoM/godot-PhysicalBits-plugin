@@ -21,10 +21,12 @@ func _process(_delta):
 	var msg = packet.get_string_from_utf8()
 	var json = JSON.parse(msg).result
 	var new_data = {}
-	for pin in json["pins"]:
-		new_data[pin["name"]] = {"value": pin["value"], "type": PIN}
-	for global in json["globals"]:
-		new_data[global["name"]] = {"value": fix_json_floats(global["value"]), "type": GLOBAL}
+	if json["pins"]:
+		for pin in json["pins"]:
+			new_data[pin["name"]] = {"value": pin["value"], "type": PIN}
+	if json["globals"]:
+		for global in json["globals"]:
+			new_data[global["name"]] = {"value": fix_json_floats(global["value"]), "type": GLOBAL}
 	# TODO(Richo): Signal event
 	data = new_data
 	
@@ -60,6 +62,7 @@ func start_client():
 	else:
 		printt("Listening on port: " + str(PORT_CLIENT) + " in server: " + IP_SERVER)
 		socket.set_dest_address(IP_SERVER, PORT_SERVER)
+		socket.put_packet(JSON.print({"action": "init"}).to_utf8())
 		
 func _exit_tree():
 	print("Closing socket")
