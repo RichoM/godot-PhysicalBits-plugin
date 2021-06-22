@@ -30,7 +30,15 @@ twitter_username: Richo_Moran
 github_username:  RichoM
 
 # Build settings
-theme: minima
+remote_theme: rundocs/jekyll-rtd-theme
+readme_index:
+  with_frontmatter: true
+
+exclude:
+  - Makefile
+  - Gemfile
+  - Gemfile.lock
+
 plugins:
   - jekyll-feed
 
