@@ -1,6 +1,6 @@
 # ![logo](docs/imgs/godot_physicalbits.svg)
 
-A plugin for the godot engine that allows interaction with the Physical Bits programming environment.
+A plugin for the [godot engine](https://godotengine.org/) that allows interaction with the [Physical Bits](https://gira.github.io/PhysicalBits/) programming environment.
 
 ![blend](docs/imgs/blend.png)
 
