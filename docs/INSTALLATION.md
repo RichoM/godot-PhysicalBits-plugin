@@ -7,13 +7,13 @@
 3. En su proyecto de [Godot](https://godotengine.org/) agregar un [Label](https://docs.godotengine.org/es/stable/classes/class_label.html) a la escena y asociarle el script [/src/PhysicalBits.gd](https://github.com/RichoM/godot-PhysicalBits-plugin/blob/main/src/PhysicalBits.gd).
 4. Ejecutar la escena, si la conexión entre Godot y Physical Bits fue exitosa en el label deberían observarse los valores de las variables y los pines en uso en el programa.
 
-![connection_successful]({{ site.baseurl }}/imgs/connection_successful.png)
+[![connection_successful]({{ site.baseurl }}/imgs/connection_successful.png)]({{ site.baseurl }}/imgs/connection_successful.png)
 
 ## Uso
 
 Desde el inspector se pueden configurar los parámetros de conexión del plugin (aunque normalmente no debería ser necesario).
 
-![pbits_inspector]({{ site.baseurl }}/imgs/pbits_inspector.PNG)
+[![pbits_inspector]({{ site.baseurl }}/imgs/pbits_inspector.PNG)]({{ site.baseurl }}/imgs/pbits_inspector.PNG)
 
 Para acceder a los valores de los pines y variables del programa en el dispositivo:
 
