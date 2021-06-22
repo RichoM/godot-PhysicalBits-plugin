@@ -6,7 +6,9 @@ sort: 2
 
 ## Descripción
 
-Este ejemplo consiste de otro videojuego sencillo pero en lugar de usar el [Arduino UNO](https://store.arduino.cc/usa/arduino-uno-rev3) como un control experimental vamos a usarlo para mostrar información al jugador de lo que sucede en el juego. Para mostrar esta información usaremos una serie de actuadores. Puede verse en el siguiente video:
+Este ejemplo consiste de otro videojuego sencillo pero en lugar de usar el [Arduino UNO](https://store.arduino.cc/usa/arduino-uno-rev3) como un control experimental vamos a usarlo para mostrar información al jugador de lo que sucede en el juego. Para mostrar esta información usaremos una serie de actuadores.
+
+El resultado puede verse en el siguiente video:
 
 <iframe width="100%" height="515" src="https://www.youtube.com/embed/_SzpKWqWwGU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <br>
